@@ -17,14 +17,20 @@ h3,
 h4,
 h5,
 h6,
+p,
 span {
-  color: 242424;
+  color: #242424;
   text-align: center;
   line-height: 1.25;
 }
 
 h1 {
   font-size: 36px;
+}
+
+a {
+  text-decoration: none;
+  position: relative;
 }
 
 p {
@@ -52,6 +58,7 @@ li {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .text--purple {
@@ -76,6 +83,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 12px;
 }
 
 .nav__link--list {
@@ -90,19 +98,32 @@ nav {
   font-weight: 600;
 }
 
-.link__hover-effect {
-  border-bottom: 2px solid transparent;
-  opacity: 1;
-  transform: scale(1);
-  transition: all 100ms ease;
+.link__hover-effect:after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  background-color: #6200ff;
+  width: 0;
+  bottom: -5px;
+  left: 50%;
+  right: 50%;
+  transition: all 300ms ease;
 }
 
-.link__hover-effect:hover {
-  border-bottom: 2px solid #4c00ff;
-  padding-bottom: 3px;
-  filter: brightness(80%);
-  opacity: 0.86;
-  transform: scale(0.9);
+.link__hover-effect:hover:after {
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+.link__hover-effect--white {
+  color: #e6e6e6;
+  text-decoration: none;
+}
+
+.link__hover-effect--black {
+  color: #242424;
+  text-decoration: none;
 }
 
 .nav__link--anchor-primary {
@@ -110,15 +131,13 @@ nav {
   padding: 8px 20px;
   border-radius: 50px;
   color: white;
-  transition: all 300ms ease;
+  transition: all 250ms ease;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0);
-
 }
 
 .nav__link--anchor-primary:hover {
   background-color: #6200ff;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-
 }
 
 .personal__logo {
@@ -192,7 +211,7 @@ nav {
 }
 
 .about-me__img {
-width: 100%;
+  width: 100%;
 }
 
 /* LANGUAGES */
@@ -225,6 +244,7 @@ width: 100%;
 
 .language__list {
   display: flex;
+  justify-content: center;
   width: 100%;
   flex-wrap: wrap;
 }
@@ -245,7 +265,6 @@ width: 100%;
 /* PROJECTS */
 
 .project {
-
   margin-bottom: 135px;
 }
 .project:last-child {
@@ -299,7 +318,7 @@ width: 100%;
 }
 
 .project__description--para {
-  margin: 16px 0px;  
+  margin: 16px 0px;
 }
 
 .project__description--title,
@@ -321,7 +340,7 @@ width: 100%;
 }
 
 .project:hover .project__description {
-  opacity: 1; 
+  opacity: 1;
   transform: translateY(-80%);
 }
 
@@ -331,4 +350,133 @@ width: 100%;
   text-decoration: none;
 }
 
+/* FOOTER */
 
+footer {
+  background-color: #242424;
+}
+
+.footer__row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0 30px 0;
+}
+
+.footer__logo--top {
+  color: #e6e6e6;
+  text-decoration-style: none;
+}
+
+.footer__logo--img {
+  width: 80px;
+  filter: invert();
+}
+
+.footer__social--list {
+  width: 100%;
+  max-width: 250px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+}
+
+.footer__social--link,
+.footer__copyright,
+.footer__logo--popout {
+  color: #e6e6e6;
+}
+
+.footer__logo--popout {
+  position: absolute;
+  top: 50px;
+  font-weight: 700;
+  opacity: 0;
+  transition: all 300ms ease;
+}
+
+.footer__anchor:hover .footer__logo--popout {
+  opacity: 1;
+  transform: translateY(-80px);
+}
+
+.footer__anchor {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+/* Small phones, tablets  and large smartphones */
+@media (max-width: 768px) {
+  nav {
+    height: 68px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .about-me__info--para {
+    font-size: 18px;
+  }
+
+  .language {
+    width: calc(100% / 3);
+  }
+
+  .project__description--para {
+    font-size: 14px;
+  }
+
+  .project__description {
+    padding-right: 30px;
+    left: 30px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .nav__link:not(:last-child) {
+    display: none;
+  }
+  .language__img {
+    width: 80%;
+  }
+
+  .project {
+    margin-bottom: 40px;
+  }
+
+  .project__description {
+    margin-top: 10px;
+    padding: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .project__description--title {
+    font-size: 28px;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .project__description--sub-title {
+    text-align: center;
+    margin: 12px 0;
+  }
+
+  .project__description--para {
+    display: none;
+  }
+
+  .project__description--links {
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer__row {
+    padding-bottom: 20px;
+  }
+}
